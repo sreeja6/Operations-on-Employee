@@ -1,0 +1,49 @@
+{% extends 'Common.html' %}
+{% block sree %}
+    <style>
+    #v_first_row
+    {
+        font-size: 30px;
+        background-color: yellow;
+    }
+    .v_second_row
+    {
+        font-size: 25px;
+        background-color: burlywood;
+    }
+    .v_third_row
+    {
+        font-size:20px ;
+    }
+
+
+    </style>
+    <table align="center" border="2">
+    <tr><th colspan="5" id="v_first_row">View all Employee Information</th></tr>
+    <tr>
+        <th class="v_second_row">Idno</th>
+        <th class="v_second_row">Name</th>
+        <th class="v_second_row">Salary</th>
+        <th class="v_second_row">Update</th>
+        <th class="v_second_row">Delete</th>
+
+    </tr>
+        {% for x in emp %}
+    <tr>
+        <th class="v_third_row">{{ x.idno }}</th>
+        <th class="v_third_row">{{ x.name }}</th>
+        <th class="v_third_row">{{ x.salary }}</th>
+        <th class="v_third_row">
+            <form action="{% url 'update_emp' %}">
+            <input type="hidden" value="{{ x.no }}" name="u1">
+            <button type="submit" >update</button>
+            </form>
+        </th>
+        <th><a href="{% url 'delete_emp' %}?no={{ x.idno }}">
+            Delete
+        </a>
+        </th>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

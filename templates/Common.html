@@ -1,0 +1,62 @@
+{% load static %}
+<html>
+<head>
+    <style>
+        #first_row
+        {
+            color: green;
+            font-family: 'Agency FB';
+            font-size: 60px;
+        }
+        #tab
+        {
+            margin-top: 50px;
+            width: 700px;
+        }
+        .second_row
+        {
+            font-size: 40px;
+            color:darkblue;
+            font-family: "Agency FB";
+        }
+        #last_row
+        {
+
+            font-size: 25px;
+            color:red;
+            font-family:'Felix Titling'
+        }
+
+    </style>
+</head>
+    <body>
+<table align="center" border="2" id="tab">
+    <tr><th colspan="3" id="first_row">Sathay's Employee Information</th></tr>
+    <tr>
+        <th class="second_row"><a href="{% url 'add_emp' %}">Add Employee</a></th>
+        <th class="second_row"><a href="{% url 'view_all_emp' %}">View All Employee's</a></th>
+        <th class="second_row"><a href="{% url 'main' %}">Home</a></th>
+    </tr>
+    <tr>
+        <th colspan="3">
+            {% block sree %}
+                {% if messages %}
+                {% for x in messages %}
+                    <h2 style="font-family:'Agency FB';font-size: 30px; color: purple"> {{ x }}</h2>
+                {% endfor %}
+                {% else %}
+           <img src="{% static 'images/Employee.png' %}"height="300" width="500">
+                {% endif %}
+            {% endblock %}
+
+        </th>
+    </tr>
+<tr>
+    <th colspan="3" id="last_row">
+        Copy right @ with Sathya
+    </th>
+</tr>
+</table>
+</body>
+
+</html>
